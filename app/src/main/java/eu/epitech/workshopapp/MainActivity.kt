@@ -49,6 +49,17 @@ class CookieGameViewModel : AndroidDataFlow() {
         }
     }
 
+    fun clickWithLogic(boolean: Boolean) {
+        action {
+            setState(Loading)
+            if (boolean) {
+                setState(Result("hello world"))
+            } else {
+                setState(Result("not hello world"))
+            }
+        }
+    }
+
     fun click() {
         action {
             setState(Loading)
