@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">WorkshopApp</string>
+    <string name="app_name" translatable="false">WorkshopApp</string>
     <string name="click_me">Click me</string>
 </resources>
