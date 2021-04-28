@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cookieGameFragment">
+
+    <fragment
+        android:id="@+id/cookieGameFragment"
+        android:name="eu.epitech.workshopapp.CookieGameFragment"
+        tools:layout="@layout/fragment_cookiegame"
+        android:label="CookieGameFragment" >
+        <action
+            android:id="@+id/openNewPage"
+            app:destination="@id/newDirectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newDirectionFragment"
+        android:name="eu.epitech.workshopapp.NewDirectionFragment"
+        tools:layout="@layout/fragment_newpage"
+        android:label="NewDirectionFragment">
+
+        <argument
+            android:name="sampleData"
+            app:argType="string" />
+    </fragment>
+</navigation>
