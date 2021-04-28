@@ -7,7 +7,8 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 val myModule = module {
-    viewModel { CookieGameViewModel() }
+    single { Loader() }
+    viewModel { CookieGameViewModel(get()) }
 }
 
 class MyApplication: Application() {

@@ -39,9 +39,18 @@ class NewDirectionFragment : Fragment() {
 sealed class CookieGameState : UIState()
 object Idle : CookieGameState()
 object Loading : CookieGameState()
+object Error : CookieGameState()
 data class Result(val data: String) : CookieGameState()
 
-class CookieGameViewModel : AndroidDataFlow() {
+class Loader {
+    suspend fun loadData(): List<String> {
+        delay(1000)
+        return listOf("a", "b", "c")
+    }
+    fun magicNumber() = 42
+}
+
+class CookieGameViewModel(val loader: Loader) : AndroidDataFlow() {
 
     init {
         action {
@@ -64,7 +73,11 @@ class CookieGameViewModel : AndroidDataFlow() {
         action {
             setState(Loading)
             delay(3000)
-            setState(Result("hello world"))
+            try {
+                setState(Result(loader.loadData().joinToString(",")))
+            } catch (e: Exception) {
+                setState(Error)
+            }
         }
     }
 
